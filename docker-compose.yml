@@ -1,0 +1,18 @@
+services:
+  API:
+    build: ./API
+    ports:
+    - "5000"
+    environment:
+    volumes:
+      - ./API:/app
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: bone_trauma_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bone_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bone_password}
+    
