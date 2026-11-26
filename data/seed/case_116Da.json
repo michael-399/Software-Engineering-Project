@@ -1,0 +1,107 @@
+{
+  "publication": {
+    "id": "pub-manzon-2024",
+    "citation": "Manzon et al. (2024)",
+    "authors": "Manzon, V. S. et al.",
+    "year": 2024,
+    "title": null,
+    "journal": null,
+    "doi": null
+  },
+  "individual": {
+    "id": "ind-116Da",
+    "publication_id": "pub-manzon-2024",
+    "label": "116 Da",
+    "sex": "male",
+    "age_category": "old adult",
+    "age_text": ">50 years",
+    "site": "Spina necropolis, Ferrara",
+    "country": "Italy",
+    "chronology_text": "5th-3rd c. BC",
+    "chronology_start_year": -500,
+    "chronology_end_year": -201,
+    "other_trauma": "no other skeletal trauma reported"
+  },
+  "lesion": {
+    "id": "les-116Da-1",
+    "individual_id": "ind-116Da",
+    "record_source": "published",
+    "case_ref": "Fig. 5A",
+    "bone": "femur",
+    "side": "right",
+    "portion": "diaphysis (unspecified)",
+    "aspects": ["posterior", "medial"],
+    "joint_involvement": "NR",
+    "location_text": "Posteromedial aspect of the diaphysis; two closely located cut marks.",
+    "examination_methods": ["macroscopic", "magnification (lens)"],
+    "preservation_text": "Diaphyseal segment lacking the articular ends. Radiograph/CT: NR.",
+    "lesion_pattern": "cut mark",
+    "mark_count": 2,
+    "fragmentation": "NR",
+    "deformation": "NR",
+    "morphology_text": "Two cut marks; V-shaped section; deep bottom; cortical splintering; sharp upper edge and roughened lower edge with flake detachment.",
+    "timing": "perimortem",
+    "healing_present": "no",
+    "healing_stage": "NA",
+    "timing_features": [],
+    "complications_text": "NR",
+    "trauma_category": "sharp force",
+    "trauma_subtype": "cut (incised)",
+    "differential": [],
+    "instrument_text": "sword or dagger proposed",
+    "dynamics_text": "right-handed opponent, blow from behind",
+    "vascular_involvement_text": "possible femoral artery involvement",
+    "cause_of_death": "uncertain",
+    "sequence_text": "Second mark interpreted as related to blade extraction.",
+    "interpretation_by": "source_authors",
+    "interpretation_text": "Sharp-force trauma, cut injury subtype."
+  },
+  "marks": [
+    {
+      "id": "mark-116Da-1",
+      "lesion_id": "les-116Da-1",
+      "label": "main mark",
+      "orientation_text": "oblique, from proximal/superior to distal/inferior",
+      "cross_section": "V-shaped",
+      "floor_text": "deep bottom",
+      "margins": ["sharp", "roughened"],
+      "flaking": "yes",
+      "description_text": "Sharp upper edge and roughened lower edge with flake detachment; cortical splintering."
+    },
+    {
+      "id": "mark-116Da-2",
+      "lesion_id": "les-116Da-1",
+      "label": "second mark",
+      "orientation_text": "proximal-distal",
+      "cross_section": "NR",
+      "floor_text": "NR",
+      "margins": [],
+      "flaking": "NR",
+      "description_text": null
+    }
+  ],
+  "measurements": [
+    { "mark_id": "mark-116Da-1", "quantity": "depth",  "value": 1.4,  "unit": "mm", "status": "reported", "note": "maximum" },
+    { "mark_id": "mark-116Da-1", "quantity": "length", "value": null, "unit": "mm", "status": "NR", "note": null },
+    { "mark_id": "mark-116Da-1", "quantity": "width",  "value": null, "unit": "mm", "status": "NR", "note": null },
+    { "mark_id": "mark-116Da-2", "quantity": "depth",  "value": null, "unit": "mm", "status": "NR", "note": "maximum" },
+    { "mark_id": "mark-116Da-2", "quantity": "length", "value": null, "unit": "mm", "status": "NR", "note": null },
+    { "mark_id": "mark-116Da-2", "quantity": "width",  "value": null, "unit": "mm", "status": "NR", "note": null }
+  ],
+  "images": [
+    {
+      "id": "img-116Da-5A",
+      "lesion_id": "les-116Da-1",
+      "publication_id": "pub-manzon-2024",
+      "figure_ref": "Fig. 5A",
+      "file_path": null,
+      "view": "overview",
+      "has_scale": "yes",
+      "has_annotations": "yes",
+      "clean_version_id": null,
+      "licence": "unknown",
+      "licence_note": "Overview with inset detail; red arrows mark the cuts. Licence to be checked.",
+      "usable": "none"
+    }
+  ]
+}
