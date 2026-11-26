@@ -1,18 +1,68 @@
 services:
-  API:
-    build: ./API
-    ports:
-    - "5000"
-    environment:
-    volumes:
-      - ./API:/app
-    depends_on:
-      db:
-        condition: service_healthy
   db:
     image: pgvector/pgvector:pg17
     container_name: bone_trauma_db
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-bone_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bone_password}
-    
+      POSTGRES_DB: ${POSTGRES_DB:-bone_injuries}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bone_user} -d ${POSTGRES_DB:-bone_injuries}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  minio:
+    image: ghcr.io/coollabsio/minio:latest
+    container_name: bone_injury_minio
+    command: server /data --console-address ":9001"
+    env_file:
+      - .env
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - miniodata:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  api:
+    build: ./API
+    ports:
+    - "5000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-bone_user}:${POSTGRES_PASSWORD:-bone_password}@db:5432/${POSTGRES_DB:-bone_injuries}
+      S3_ENDPOINT_URL: http://minio:9000
+      S3_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
+      S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      S3_BUCKET: ${MINIO_BUCKET:-bone-photos}
+      LLM_API_KEY: ${LLM_API_KEY}
+    volumes:
+      - ./API:/app
+      - ./models:/app/models:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  pgdata:
+  miniodata:
+
+  
