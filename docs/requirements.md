@@ -1,8 +1,8 @@
 # Requirements specification (draft v0.1)
 
-Status: draft for team review. Priorities use MoSCoW (Must / Should / Could / Won't for this release). Release = final demo on 13/1/2027.
+Status: draft for team review. Priorities use MoSCoW (Must / Should / Could / Won't) and describe the full product. The demo on 13/1/2027 covers only a subset: see [demo scope](demo-scope.md).
 
-Related: [data schema](data-schema.md).
+Related: [demo scope](demo-scope.md), [data schema](data-schema.md), [image classifier: datasets and techniques](ml-techniques.md).
 
 ## 1. Purpose
 
@@ -179,8 +179,8 @@ All LLM output is a draft that a person must confirm or edit before it is saved.
 
 ## 6. Constraints and assumptions
 
-- Team of 2; delivery 12/1/2027, demo 13/1/2027; three sprints (23/11–3/12, 4/12–21/12, 21/12–11/1).
-- The published dataset (target 100+ lesions) comes from the Bologna/Ferrara experts. The team does not enter it manually.
+- Team of 2; delivery 12/1/2027, demo 13/1/2027; three sprints (23/11–3/12, 4/12–21/12, 21/12–11/1). The demo is limited to the guided form, search and similar cases ([demo scope](demo-scope.md)).
+- The published dataset (target 100+ lesions) comes from the Bologna/Ferrara experts and has been requested through the professor. The team does not enter it manually; for the demo it is loaded with a seed script.
 - The LLM is a hosted API (Claude or OpenAI); its cost must stay within a student budget.
 - The image classifier needs enough licensed, ML-permitted images; with few images it may only be evaluated, not relied on.
 
@@ -198,7 +198,7 @@ All LLM output is a draft that a person must confirm or edit before it is saved.
 |---|---|---|---|
 | R1 | Experts' dataset arrives late, is smaller than 100, or uses a different structure | Search demo, classifier | Ask experts now for format and date; build import against a sample; seed 5–10 cases ourselves as fallback |
 | R2 | Too few licensed images for a classifier | FR-31, FR-33 | Classifier is Should; rule-based suggestion (Must) remains |
-| R3 | Scope is large for 2 people (classifier, LLM, Italian UI, photo measuring) | Deadline | All four are Should/Could; cut order: FR-42, FR-24, FR-71, FR-17, FR-41, FR-31, FR-40 |
+| R3 | Scope is large for 2 people (classifier, LLM, Italian UI, photo measuring) | Deadline | Demo limited to form, search and similar cases ([demo scope](demo-scope.md)); everything else after the demo |
 | R4 | Sending forensic case descriptions to a hosted LLM may conflict with lab rules | NFR-6 | Ask the experts whether hosted processing is acceptable for forensic cases |
 | Q1 | Who will be curators and administrators during the demo? | Accounts | Ask the experts |
 | Q2 | Are the rule-based timing criteria acceptable as written by the team, or must the experts write/approve them? | FR-30 | Ask the experts |
